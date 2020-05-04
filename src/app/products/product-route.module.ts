@@ -7,6 +7,7 @@ import {ProductEditComponent} from './product-edit/product-edit.component';
 import {ProductResolver} from './product-resolver.service';
 import {ProductEditInfoComponent} from './product-edit/product-edit-info.component';
 import {ProductEditTagsComponent} from './product-edit/product-edit-tags.component';
+import {ProductListResolverService} from './product-list-resolver.service';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import {ProductEditTagsComponent} from './product-edit/product-edit-tags.compone
     CommonModule,
     RouterModule.forChild([
       {path: 'products', children: [
-        {path: '', component: ProductListComponent},
+        {path: '', component: ProductListComponent, resolve: {products: ProductListResolverService}},
         {path: ':id', component: ProductDetailComponent, resolve: {resolvedData: ProductResolver}},
         {path: ':id/edit', component: ProductEditComponent, resolve: {resolvedData: ProductResolver}, children: [
             {path: '', redirectTo: 'info', pathMatch: 'full'},

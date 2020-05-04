@@ -16,6 +16,7 @@ import { UserModule } from './user/user.module';
 import { MessageModule } from './messages/message.module';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import {AppRoutingModule} from './app-routing.module';
     UserModule,
     MessageModule,
     AppRoutingModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,
