@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {MessageService} from '../../messages/message.service';
 
-import {Product} from '../product';
+import {Product, ProductResolved} from '../product';
 import {ProductService} from '../product.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -24,15 +24,9 @@ export class ProductEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(p => {
-      this.getProduct(+p.id);
-    });
-  }
-
-  getProduct(id: number): void {
-    this.productService.getProduct(id).subscribe({
-      next: product => this.onProductRetrieved(product),
-      error: err => this.errorMessage = err
+    this.route.data.subscribe(data => {
+      this.errorMessage = data.resolvedData.error;
+      this.onProductRetrieved(data.resolvedData.product);
     });
   }
 
