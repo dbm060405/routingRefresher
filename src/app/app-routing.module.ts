@@ -17,7 +17,7 @@ import {SelectiveStrategy} from './selective-strategy.service';
       },
       {path: '', redirectTo: 'welcome', pathMatch: 'full'},
       {path: '**', component: PageNotFoundComponent}
-    ], {preloadingStrategy: SelectiveStrategy})
+    ], { preloadingStrategy: SelectiveStrategy, relativeLinkResolution: 'legacy' })
   ],
   exports: [RouterModule]
 })
